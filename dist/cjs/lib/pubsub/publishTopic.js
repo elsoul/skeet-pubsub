@@ -10,8 +10,8 @@ const publishTopic = async (topicName, json) => {
         return messageId;
     }
     catch (error) {
-        console.log(`pubsubPublish: ${JSON.stringify(error)}`);
-        throw new Error(JSON.stringify(error));
+        console.log(`pubsubPublish: ${error}`);
+        throw new Error(`pubsubPublish: ${error}`);
     }
 };
 exports.publishTopic = publishTopic;

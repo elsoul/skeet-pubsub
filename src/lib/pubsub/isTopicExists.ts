@@ -6,7 +6,10 @@ export const isTopicExists = async (topicName: string) => {
     const [topics] = await pubsub.getTopics()
 
     // Check if the topic exists in the list of topics
-    const exists = topics.some((topic) => topic.name === topicName)
+    const exists = topics.some((topic) => {
+      const lastPart = topic.name.split('/').pop()
+      return lastPart === topicName
+    })
     return exists
   } catch (error) {
     console.log(`isTopicExists: ${JSON.stringify(error)}`)

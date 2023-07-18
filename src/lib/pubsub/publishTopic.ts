@@ -7,7 +7,7 @@ export const publishTopic = async <T>(topicName: string, json: T) => {
     console.log(`Message ${messageId} published.`)
     return messageId
   } catch (error) {
-    console.log(`pubsubPublish: ${JSON.stringify(error)}`)
-    throw new Error(JSON.stringify(error))
+    console.log(`pubsubPublish: ${error}`)
+    throw new Error(`pubsubPublish: ${error}`)
   }
 }

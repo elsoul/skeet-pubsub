@@ -7,7 +7,10 @@ const isTopicExists = async (topicName) => {
         const pubsub = new pubsub_1.PubSub();
         const [topics] = await pubsub.getTopics();
         // Check if the topic exists in the list of topics
-        const exists = topics.some((topic) => topic.name === topicName);
+        const exists = topics.some((topic) => {
+            const lastPart = topic.name.split('/').pop();
+            return lastPart === topicName;
+        });
         return exists;
     }
     catch (error) {
