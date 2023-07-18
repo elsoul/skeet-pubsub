@@ -1,1 +1,1 @@
-export declare const publishTopic: <T>(topicName: string, json: T) => Promise<string>;
+export declare const publishTopic: (topicName: string, data: string) => Promise<string>;

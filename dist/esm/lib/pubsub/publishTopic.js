@@ -1,8 +1,8 @@
 import { PubSub } from '@google-cloud/pubsub';
-export const publishTopic = async (topicName, json) => {
+export const publishTopic = async (topicName, data) => {
     try {
         const pubsub = new PubSub();
-        const messageId = await pubsub.topic(topicName).publishMessage({ json });
+        const messageId = await pubsub.topic(topicName).publishMessage({ data });
         console.log(`Message ${messageId} published.`);
         return messageId;
     }
