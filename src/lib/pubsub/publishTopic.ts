@@ -6,12 +6,13 @@ export const publishTopic = async <
   },
 >(
   queryType: QueryType,
+  queryName: string,
   topicName: string,
   params: T,
 ) => {
   try {
     const pubsub = new PubSub()
-    const data = toGraphqlQuery<T>(queryType, topicName, params)
+    const data = toGraphqlQuery<T>(queryType, queryName, params)
     const messageId = await pubsub.topic(topicName).publishMessage({ data })
     console.log(`Message ${messageId} published.`)
     return messageId

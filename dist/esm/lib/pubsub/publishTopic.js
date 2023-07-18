@@ -1,8 +1,8 @@
 import { PubSub } from '@google-cloud/pubsub';
-export const publishTopic = async (queryType, topicName, params) => {
+export const publishTopic = async (queryType, queryName, topicName, params) => {
     try {
         const pubsub = new PubSub();
-        const data = toGraphqlQuery(queryType, topicName, params);
+        const data = toGraphqlQuery(queryType, queryName, params);
         const messageId = await pubsub.topic(topicName).publishMessage({ data });
         console.log(`Message ${messageId} published.`);
         return messageId;

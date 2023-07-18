@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.publishTopic = void 0;
 const pubsub_1 = require("@google-cloud/pubsub");
-const publishTopic = async (queryType, topicName, params) => {
+const publishTopic = async (queryType, queryName, topicName, params) => {
     try {
         const pubsub = new pubsub_1.PubSub();
-        const data = toGraphqlQuery(queryType, topicName, params);
+        const data = toGraphqlQuery(queryType, queryName, params);
         const messageId = await pubsub.topic(topicName).publishMessage({ data });
         console.log(`Message ${messageId} published.`);
         return messageId;
